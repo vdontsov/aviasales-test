@@ -1,0 +1,79 @@
+@import '../../variables';
+
+$size: 30px;
+$bg: #F1FCFF;
+
+.wrapper {
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $bg;
+  }
+}
+
+.checkbox {
+  position: relative;
+  display: block;
+  padding-left: $size;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.input {
+  position: relative;
+  z-index: 2;
+  vertical-align: top;
+  opacity: .00001;
+  appearance: none;
+  margin: 0 10px 0 #{$size * -1};
+}
+
+.styler {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid $blue_2;
+  border-radius: 2px;
+  box-sizing: border-box;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 3px;
+    display: block;
+    width: 8px;
+    height: 4px;
+    margin: auto;
+    color: $blue_1;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    transform: rotate(-45deg) scale(0);
+  }
+}
+
+.input,
+.styler {
+  width: 20px;
+  height: 20px;
+}
+
+.styler:hover,
+.input:focus + .styler,
+.input:hover + .styler {
+    color: $blue_1;
+    border: 1px solid $blue_1;
+}
+
+.input:checked + .styler {
+  border: 1px solid $blue_1;
+
+  &::after {
+    transform: rotate(-45deg) scale(1);
+  }
+}

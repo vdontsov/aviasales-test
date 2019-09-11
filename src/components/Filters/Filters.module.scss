@@ -1,0 +1,12 @@
+@import '../../mixins';
+
+.title {
+  @include header;
+}
+
+.filtersWrapper {
+  margin-top: 10px;
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+}
