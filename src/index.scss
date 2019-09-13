@@ -1,7 +1,9 @@
 @import 'reset-css';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import './variables';
 
 body {
   font-family: 'Open Sans';
-  color: #4A4A4A;
+  color: $black_1;
+  background-color: $blue_4;
 }

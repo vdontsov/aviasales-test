@@ -1,0 +1,30 @@
+.app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  &Header {
+    padding: 50px 0;
+    flex: none;
+  }
+
+  &Main {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  &Filters {
+    width: 232px;
+  }
+
+  &Results {
+    max-width: 502px;
+    width: 100%;
+  }
+
+  &Filters,
+  &Results {
+    padding: 0 10px;
+  }
+}
