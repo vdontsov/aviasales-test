@@ -1,0 +1,46 @@
+@import '../../variables';
+
+.sortTabs {
+  display: flex;
+  height: 50px;
+
+  & .tab {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    flex: 1 0 auto;
+    background-color: $white;
+    align-items: center;
+    border: 1px solid $gray_2;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    z-index: 1;
+
+    &.active {
+      background-color: $blue_1;
+      border-color: $blue_1;
+      color: $white;
+    }
+
+    &:not(.active):hover {
+      color: $blue_1;
+      background-color: $blue_3;
+      border-color: $blue_1;
+      z-index: 2;
+    }
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+  }
+}
