@@ -1,3 +1,4 @@
+@import '../../variables';
 @import '../../mixins';
 
 .title {
@@ -6,7 +7,7 @@
 
 .filtersWrapper {
   margin-top: 10px;
-  width: 100vw;
   position: relative;
-  left: calc(-50vw + 50%);
+  left: -$card_padding;
+  width: calc(100% + #{2 * $card_padding});
 }

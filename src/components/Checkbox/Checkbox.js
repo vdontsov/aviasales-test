@@ -32,7 +32,7 @@ const Checkbox = ({ title, checked, onChange }) => {
 
 Checkbox.defaultProps = {
   checked: false,
-  onChange: () => {},
+  onChange: () => null,
 }
 
 Checkbox.propTypes = {

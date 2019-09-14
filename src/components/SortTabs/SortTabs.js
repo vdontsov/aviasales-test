@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { SortTabsPropTypes } from '../../utils'
 
 import styles from './SortTabs.module.scss'
 
@@ -22,18 +23,12 @@ const SortTabs = ({ data, onChange, ...props }) => {
 
 SortTabs.defaultProps = {
   data: [],
-  onChange: () => {},
+  onChange: () => null,
 }
 
 SortTabs.propTypes = {
   onChange: PropTypes.func,
-  data: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]).isRequired,
-    title: PropTypes.string.isRequired,
-  })),
+  data: SortTabsPropTypes,
   active: PropTypes.number,
 }
 

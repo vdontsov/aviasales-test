@@ -14,3 +14,20 @@ export const TicketPropTypes = PropTypes.shape({
   segments: PropTypes.arrayOf(SegmentPropTypes),
   duration: PropTypes.number,
 })
+
+export const SortTabsPropTypes = PropTypes.arrayOf(PropTypes.shape({
+  id: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+  title: PropTypes.string.isRequired,
+}))
+
+export const FiltersPropTypes = PropTypes.arrayOf(PropTypes.shape({
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  title: PropTypes.string.isRequired,
+  checked: PropTypes.bool,
+}))

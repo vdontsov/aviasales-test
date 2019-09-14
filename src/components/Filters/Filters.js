@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FiltersPropTypes } from '../../utils'
 
 import Card from '../Card'
 import Checkbox from '../Checkbox'
@@ -25,19 +26,12 @@ const Filters = ({ title, data, onChange }) => {
 Filters.defaultProps = {
   title: '',
   data: [],
-  onChange: () => {},
+  onChange: () => null,
 }
 
 Filters.propTypes = {
   title: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]).isRequired,
-    title: PropTypes.string.isRequired,
-    checked: PropTypes.bool,
-  })),
+  data: FiltersPropTypes,
   onChange: PropTypes.func,
 }
 
