@@ -1,4 +1,4 @@
-import FILTERS from './data/filters.json'
+import FILTERS from '../data/filters.json'
 import actionTypes from './actionTypes'
 
 const ALL_FILTER = FILTERS[0]
