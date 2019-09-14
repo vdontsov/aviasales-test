@@ -27,7 +27,7 @@ const Segment = ({ data }) => {
       />
       <SegmentColumn
         head={`${numberOfStops} ${stopsTitle}`}
-        text={joinedStops}
+        text={joinedStops || 'Прямой'}
       />
     </div>
   )

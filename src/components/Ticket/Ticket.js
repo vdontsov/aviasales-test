@@ -12,7 +12,7 @@ const Ticket = ({ data }) => {
   const segments = data.segments && data.segments.map((s, i) => <Segment key={i} data={s} />)
 
   return (
-    <Card>
+    <Card classes={[styles.ticket]}>
       <div className={styles.ticketHeader}>
         <div className={styles.ticketPrice}>{price}</div>
         <img alt={data.carrier} width="99" height="36" src={imgSrc} srcSet={imgSrcSet} />

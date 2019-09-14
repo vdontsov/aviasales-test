@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   sortTabs: SORT_TABS,
   filters: FILTERS,
   searchId: '',
+  currentPage: 1,
 }
 
 export default (state = INITIAL_STATE, action) => {

@@ -1,15 +1,30 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { FiltersPropTypes, SortTabsPropTypes, TicketPropTypes } from '../../utils'
-import { Filters, SortTabs } from '../../components'
+import { Filters, SortTabs, Ticket } from '../../components'
 import styles from './App.module.scss'
 
-const App = ({ filters, changeFilters, sortTabs, getSearchId, searchId, getTickets }) => {
+const App = ({
+  filters,
+  changeFilters,
+  sortTabs,
+  getSearchId,
+  searchId,
+  getTickets,
+  currentPage,
+  tickets,
+  loadingTickets,
+}) => {
   useEffect(getSearchId, [])
 
   useEffect(() => {
     if (searchId) getTickets(searchId)
   }, [searchId, getTickets])
+
+  const numberPerPage = 10
+  const begin = ((currentPage - 1) * numberPerPage)
+  const end = begin + numberPerPage
+  const ticketsToShow = tickets.slice(begin, end).map(t => <Ticket data={t} />)
 
   return (
     <div className={styles.app}>
@@ -24,6 +39,9 @@ const App = ({ filters, changeFilters, sortTabs, getSearchId, searchId, getTicke
         </div>
         <div className={styles.appResults}>
           <SortTabs data={sortTabs} />
+          <div>
+            {ticketsToShow}
+          </div>
         </div>
       </main>
     </div>
@@ -31,6 +49,7 @@ const App = ({ filters, changeFilters, sortTabs, getSearchId, searchId, getTicke
 }
 
 App.propTypes = {
+  currentPage: PropTypes.number,
   loadingTickets: PropTypes.bool,
   tickets: PropTypes.arrayOf(TicketPropTypes),
   searchId: PropTypes.string,
