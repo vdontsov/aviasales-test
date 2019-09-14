@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { changeFilters, } from '../../actions'
 import App from './App'
 
 const mapStateToProps = ({ filters, sortTabs }) => ({
@@ -6,6 +7,8 @@ const mapStateToProps = ({ filters, sortTabs }) => ({
   sortTabs,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  changeFilters,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

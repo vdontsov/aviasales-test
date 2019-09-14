@@ -8,7 +8,11 @@ const App = props => (
     <header className={styles.appHeader}></header>
     <main className={styles.appMain}>
       <div className={styles.appFilters}>
-        <Filters title="Количество пересадок" data={props.filters} />
+        <Filters
+          title="Количество пересадок"
+          data={props.filters}
+          onChange={props.changeFilters}
+        />
       </div>
       <div className={styles.appResults}>
         <SortTabs data={props.sortTabs} />

@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './Checkbox.module.scss'
 
 const Checkbox = ({ title, checked, onChange }) => {
-  const [isChecked, setIsChecked] = useState(checked)
+  const inputRef = useRef()
 
-  useEffect(() => {
-    if (isChecked !== checked) {
-      onChange(isChecked)
-    }
-  }, [isChecked, checked, onChange])
-
-  const onInputChangeHandler = e => setIsChecked(e.target.checked)
-  const onClickWrapperHandler = () => setIsChecked(!isChecked)
+  const onInputChangeHandler = e => onChange(e.target.checked)
+  const onClickWrapperHandler = () => onChange(!inputRef.current.checked)
 
   return (
     <div className={styles.wrapper} onClick={onClickWrapperHandler}>
       <div className={styles.checkbox}>
         <input
+          ref={inputRef}
           className={styles.input}
-          checked={isChecked}
+          checked={checked}
           onChange={onInputChangeHandler}
           type="checkbox" />
         <span className={styles.styler} aria-hidden="true"></span>
