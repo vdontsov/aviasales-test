@@ -17,6 +17,7 @@
     "redux-thunk": "^2.3.0",
     "reset-css": "^4.0.1",
     "sass-loader": "^8.0.0",
+    "shortid": "^2.2.15",
     "style-loader": "^1.0.0"
   },
   "scripts": {

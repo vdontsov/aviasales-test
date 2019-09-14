@@ -1,13 +1,17 @@
 @import '../../variables';
 @import '../../mixins';
 
-.title {
-  @include header;
-}
+.filters {
+  position: fixed;
 
-.filtersWrapper {
-  margin-top: 10px;
-  position: relative;
-  left: -$card_padding;
-  width: calc(100% + #{2 * $card_padding});
+  &Title {
+    @include header;
+  }
+
+  &Wrapper {
+    margin-top: 10px;
+    position: relative;
+    left: -$card_padding;
+    width: calc(100% + #{2 * $card_padding});
+  }
 }

@@ -14,8 +14,8 @@ const Filters = ({ title, data, onChange }) => {
                                       onChange={onChangeHandler(i.id)} />)
 
   return (
-    <Card>
-      <h4 className={styles.title}>{title}</h4>
+    <Card classes={[styles.filters]}>
+      <h4 className={styles.filtersTitle}>{title}</h4>
       <div className={styles.filtersWrapper}>
         {checkboxes}
       </div>
