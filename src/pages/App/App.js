@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { FiltersPropTypes, SortTabsPropTypes } from '../../utils'
+import { FiltersPropTypes, SortTabsPropTypes, TicketPropTypes } from '../../utils'
 import { Filters, SortTabs } from '../../components'
 import styles from './App.module.scss'
 
-const App = ({ filters, changeFilters, sortTabs, getSearchId, searchId }) => {
+const App = ({ filters, changeFilters, sortTabs, getSearchId, searchId, getTickets }) => {
   useEffect(getSearchId, [])
 
   useEffect(() => {
-    // get data
-  }, [searchId])
+    if (searchId) getTickets(searchId)
+  }, [searchId, getTickets])
 
   return (
     <div className={styles.app}>
@@ -31,11 +31,14 @@ const App = ({ filters, changeFilters, sortTabs, getSearchId, searchId }) => {
 }
 
 App.propTypes = {
+  loadingTickets: PropTypes.bool,
+  tickets: PropTypes.arrayOf(TicketPropTypes),
   searchId: PropTypes.string,
   filters: FiltersPropTypes,
   sortTabs: SortTabsPropTypes,
   changeFilters: PropTypes.func,
   getSearchId: PropTypes.func,
+  getTickets: PropTypes.func,
 }
 
 export default App

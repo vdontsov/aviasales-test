@@ -1,5 +1,5 @@
 import FILTERS from '../data/filters.json'
-import actionTypes from './actionTypes'
+import * as actionTypes from './actionTypes'
 
 const ALL_FILTER = FILTERS[0]
 

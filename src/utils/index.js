@@ -6,16 +6,22 @@ export const pluralize = (number, titles) => {
   return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5 ) ? number % 10 : 5]]
 }
 
-export const continuousPromise = (promiseFactory, interval)  => {
-  let stop = false
+export const pollTickets = (promiseFactory, interval=100) => {
+  let data = []
 
-  const execute = () => promiseFactory().then(res => {
+  const checkCondition = (resolve, reject) => {
+    promiseFactory().then(res => {
+      data = data.concat(res.data.tickets)
 
-  }).catch(err => {
+      if (res.data.stop) {
+        resolve(data)
+      } else {
+        setTimeout(checkCondition, interval, resolve, reject)
+      }
+    }).catch(() => {
+      setTimeout(checkCondition, interval, resolve, reject)
+    })
+  }
 
-  }).finally(() => !stop && waitAndExecute());
-
-  const waitAndExecute = () => window.setTimeout(execute, interval);
-
-  execute();
+  return new Promise(checkCondition)
 }

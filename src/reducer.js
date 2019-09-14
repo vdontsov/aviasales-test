@@ -1,4 +1,4 @@
-import actionTypes from './actions/actionTypes'
+import * as actionTypes from './actions/actionTypes'
 
 import FILTERS from './data/filters.json'
 import SORT_TABS from './data/sortTabs.json'
@@ -18,6 +18,13 @@ export default (state = INITIAL_STATE, action) => {
 
   case actionTypes.GET_SEARCH_ID_SUCCESS:
     return { ...state, searchId: action.payload }
+
+  case actionTypes.GET_TICKETS:
+    return { ...state, loadingTickets: true }
+
+  case actionTypes.GET_TICKETS_SUCCESS: {
+    return { ...state, tickets: action.payload, loadingTickets: false }
+  }
 
   default:
    return state
