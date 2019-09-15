@@ -16,6 +16,7 @@ const App = ({
   currentPage,
   tickets,
   nextPage,
+  changeSortTab,
 }) => {
   useEffect(getSearchId, [])
 
@@ -40,7 +41,7 @@ const App = ({
           />
         </div>
         <div className={styles.appResults}>
-          <SortTabs data={sortTabs} />
+          <SortTabs data={sortTabs} onChange={changeSortTab} />
           <InfiniteScroll
             dataLength={ticketsToShow.length}
             hasMore={true}
@@ -60,10 +61,12 @@ App.propTypes = {
   searchId: PropTypes.string,
   filters: FiltersPropTypes,
   sortTabs: SortTabsPropTypes,
+
   changeFilters: PropTypes.func,
   getSearchId: PropTypes.func,
   getTickets: PropTypes.func,
   nextPage: PropTypes.func,
+  changeSortTab: PropTypes.func,
 }
 
 export default App

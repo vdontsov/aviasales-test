@@ -26,8 +26,8 @@ const getStopsFromSegments = (segments=[]) => {
   return result
 }
 
-export const applyTicketFilters = (filters, tickets) => {
-  const allFilter = getAllFilterObj(filters)
+export const filter = (filters={}, tickets=[]) => {
+  const allFilter = getAllFilterObj(filters) || {}
 
   if (allFilter.checked) return tickets
 

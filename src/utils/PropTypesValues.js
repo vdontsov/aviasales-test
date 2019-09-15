@@ -21,6 +21,7 @@ export const SortTabsPropTypes = PropTypes.arrayOf(PropTypes.shape({
     PropTypes.string,
   ]).isRequired,
   title: PropTypes.string.isRequired,
+  active: PropTypes.bool,
 }))
 
 export const FiltersPropTypes = PropTypes.arrayOf(PropTypes.shape({
