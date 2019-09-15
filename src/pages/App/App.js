@@ -29,6 +29,10 @@ const App = ({
   const begin = 0
   const end = currentPage * numberPerPage
   const ticketsToShow = tickets.slice(begin, end).map(t => <Ticket key={shortid.generate()} data={t} />)
+  const onChangeFiltersHandler = (v, id) => {
+    window.scrollTo(0, 0)
+    changeFilters(v, id)
+  }
 
   return (
     <div className={styles.app}>
@@ -40,7 +44,7 @@ const App = ({
           <Filters
             title="Количество пересадок"
             data={filters}
-            onChange={changeFilters}
+            onChange={onChangeFiltersHandler}
           />
         </div>
         <div className={styles.appResults}>
