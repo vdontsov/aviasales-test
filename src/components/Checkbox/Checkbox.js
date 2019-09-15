@@ -7,12 +7,17 @@ const Checkbox = ({ title, checked, onChange }) => {
   const inputRef = useRef()
 
   const onInputChangeHandler = e => onChange(e.target.checked)
-  const onClickWrapperHandler = () => onChange(!inputRef.current.checked)
+  const onClickWrapperHandler = e => {
+    if (e.target !== inputRef.current) {
+      onChange(!inputRef.current.checked)
+    }
+  }
 
   return (
     <div className={styles.wrapper} onClick={onClickWrapperHandler}>
       <div className={styles.checkbox}>
         <input
+          name={title}
           ref={inputRef}
           className={styles.input}
           checked={checked}
