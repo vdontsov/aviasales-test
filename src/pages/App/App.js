@@ -44,8 +44,9 @@ const App = ({
           />
         </div>
         <div className={styles.appResults}>
-          <SortTabs data={sortTabs} onChange={changeSortTab} />
+          <SortTabs classes={[styles.appSortTabs]} data={sortTabs} onChange={changeSortTab} />
           <InfiniteScroll
+            className={styles.appInfinityScroll}
             dataLength={ticketsToShow.length}
             hasMore={true}
             next={nextPage}

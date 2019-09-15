@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 import { SortTabsPropTypes } from '../../utils'
 
 import styles from './SortTabs.module.scss'
 
-const SortTabs = ({ data, onChange }) => {
+const SortTabs = ({ data, onChange, classes }) => {
   const onClickHandler = tabIndex => () => onChange(tabIndex)
 
   const tabs = data.map((d, index) => {
@@ -16,10 +17,11 @@ const SortTabs = ({ data, onChange }) => {
     )
   })
 
-  return <div className={styles.sortTabs}>{tabs}</div>
+  return <div className={cx(styles.sortTabs, classes)}>{tabs}</div>
 }
 
 SortTabs.defaultProps = {
+  classes: [],
   data: [],
   onChange: () => null,
 }
@@ -27,6 +29,7 @@ SortTabs.defaultProps = {
 SortTabs.propTypes = {
   onChange: PropTypes.func,
   data: SortTabsPropTypes,
+  classes: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default SortTabs
