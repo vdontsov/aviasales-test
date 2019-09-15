@@ -4,6 +4,7 @@ import shortid from 'shortid'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { FiltersPropTypes, SortTabsPropTypes, TicketPropTypes } from '../../utils'
 import { Filters, SortTabs, Ticket, Spinner } from '../../components'
+import { ReactComponent as Logo } from '../../Logo.svg'
 import styles from './App.module.scss'
 
 const App = ({
@@ -31,7 +32,9 @@ const App = ({
 
   return (
     <div className={styles.app}>
-      <header className={styles.appHeader}></header>
+      <header className={styles.appHeader}>
+        <Logo />
+      </header>
       <main className={styles.appMain}>
         <div className={styles.appFilters}>
           <Filters

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { SortTabsPropTypes } from '../../utils'
 
@@ -6,7 +6,7 @@ import styles from './SortTabs.module.scss'
 
 const SortTabs = ({ data, onChange }) => {
   const onClickHandler = tabIndex => () => onChange(tabIndex)
-  
+
   const tabs = data.map((d, index) => {
     const classNames = d.active ? `${styles.tab} ${styles.active}` : styles.tab
     return (
