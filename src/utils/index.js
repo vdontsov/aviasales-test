@@ -1,5 +1,6 @@
 export * from './PropTypesValues'
 export * from './TimeUtils'
+export * from './filterUtils'
 
 export const pluralize = (number, titles) => {
   const cases = [2, 0, 1, 1, 1, 2]

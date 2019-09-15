@@ -1,26 +1,26 @@
 [
   {
-    "id": 1,
+    "id": "all",
     "title": "Все",
     "checked": true
   },
   {
-    "id": 2,
+    "id": "0",
     "title": "Без пересадок",
     "checked": true
   },
   {
-    "id": 3,
+    "id": "1",
     "title": "1 пересадка",
     "checked": true
   },
   {
-    "id": 4,
+    "id": "2",
     "title": "2 пересадка",
     "checked": true
   },
   {
-    "id": 5,
+    "id": "3",
     "title": "3 пересадки",
     "checked": true
   }

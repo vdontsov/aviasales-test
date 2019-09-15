@@ -1,17 +1,5 @@
-import FILTERS from '../data/filters.json'
+import { isAllFilter, getAllFilterObj, checkedEveryFilterExceptAll } from '../utils'
 import * as actionTypes from './actionTypes'
-
-const ALL_FILTER = FILTERS[0]
-
-const isAllFilter = (id) => id === ALL_FILTER.id
-
-const getAllFilterObj = (filters=[]) => filters.find(f => f.id === ALL_FILTER.id)
-
-const checkedEveryFilterExceptAll = (filters=[]) => {
-  const notCheckedFilters = filters.filter(f => !f.checked)
-
-  return notCheckedFilters.length === 1 && isAllFilter(notCheckedFilters[0].id)
-}
 
 export const changeFilters = (filterValue, filterId) => (dispatch, getState) => {
   const filters = getState().filters
