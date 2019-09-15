@@ -5,7 +5,7 @@ import Segment from '../Segment'
 import styles from './Ticket.module.scss'
 
 const Ticket = ({ data }) => {
-  const CDN = 'http://pics.avs.io/99/36/'
+  const CDN = 'https://pics.avs.io/99/36/'
   const imgSrc = `${CDN}${data.carrier}.png`
   const imgSrcSet = `${CDN}${data.carrier}@2x.png`
   const price = data.price && `${data.price.toLocaleString('ru-RU')} P`
