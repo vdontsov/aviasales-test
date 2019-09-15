@@ -1,17 +1,23 @@
 @import '../../variables';
 
-.segmentTitle {
-  font-size: 12px;
-  line-height: 18px;
-  font-weight: 600;
-  color: $gray_1;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
+.segment {
+  &Column {
+    width: 100px;
+  }
 
-.segmentText {
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 600;
-  color: $black_1;
+  &Title {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 600;
+    color: $gray_1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  &Text {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    color: $black_1;
+  }
 }

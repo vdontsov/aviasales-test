@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './SegmentColumn.module.scss'
 
 const SegmentColumn = ({ head, text }) => (
-  <div>
+  <div className={styles.segmentColumn}>
     <div className={styles.segmentTitle}>{head}</div>
     <div className={styles.segmentText}>{text}</div>
   </div>
