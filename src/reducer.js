@@ -13,7 +13,24 @@ const INITIAL_STATE = {
   currentPage: 1,
 }
 
-const filterAndSort = (filters={}, sortTabs={}, tickets=[]) => sort(sortTabs, filter(filters, tickets))
+const memoizeFilterAndSort = () => {
+  let cache = {}
+
+  return (filters={}, sortTabs={}, tickets=[]) => {
+    const filtersKeys = filters.map(f => `${f.id}_${f.checked}`)
+    const sortTabsKeys = sortTabs.map(f => `${f.id}_${f.active}`)
+    const key = filtersKeys.concat(sortTabsKeys).join('_')
+
+    if (cache[key]) return cache[key]
+
+    const result = sort(sortTabs, filter(filters, tickets))
+    cache[key] = result
+
+    return result
+  }
+}
+
+const filterAndSort = memoizeFilterAndSort()
 
 export default (state = INITIAL_STATE, action) => {
  switch (action.type) {
@@ -44,7 +61,7 @@ export default (state = INITIAL_STATE, action) => {
       ...t,
       active: false
     })
-    const tickets = sort(sortTabs, state.rawTickets)
+    const tickets = filterAndSort(state.filters, sortTabs, state.rawTickets)
     return { ...state, sortTabs, tickets }
   }
 

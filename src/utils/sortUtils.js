@@ -15,10 +15,10 @@ export const sort = (sortTabs=[], tickets=[]) => {
   const cheapestSortTab = sortTabs.find(t => t.id === CHEAPEST) || {}
 
   if (fastestSortTab.active) {
-    return tickets.sort((t1, t2) => getTotalDuration(t1) - getTotalDuration(t2))
+    return tickets.concat().sort((t1, t2) => getTotalDuration(t1) - getTotalDuration(t2))
   }
 
   if (cheapestSortTab.active) {
-    return tickets.sort((t1, t2) => parseFloat(t1.price) - parseFloat(t2.price))
+    return tickets.concat().sort((t1, t2) => parseFloat(t1.price) - parseFloat(t2.price))
   }
 }

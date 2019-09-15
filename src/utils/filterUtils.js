@@ -26,29 +26,12 @@ const getStopsFromSegments = (segments=[]) => {
   return result
 }
 
-const memoizeFilter = () => {
-  let cache = {}
+export const filter = (filters=[], tickets=[]) => {
+  const allFilter = getAllFilterObj(filters) || {}
 
-  return (filters=[], tickets=[]) => {
-    const key = filters.map(f => `${f.id}_${f.checked}`).join('_')
+  if (allFilter.checked) return tickets
 
-    if (cache[key]) return cache[key]
+  const numberOfStops = reduceFilters(filters)
 
-    const allFilter = getAllFilterObj(filters) || {}
-
-    if (allFilter.checked) {
-      cache[key] = tickets
-      return tickets
-    } else {
-      const numberOfStops = reduceFilters(filters)
-      const filteredTickets = tickets.filter(
-        t => getStopsFromSegments(t.segments).every(s => numberOfStops.includes(s))
-      )
-
-      cache[key] = filteredTickets
-      return filteredTickets
-    }
-  }
+  return tickets.filter(t => getStopsFromSegments(t.segments).every(s => numberOfStops.includes(s)))
 }
-
-export const filter = memoizeFilter()
