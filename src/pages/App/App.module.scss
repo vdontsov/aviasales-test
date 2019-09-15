@@ -1,3 +1,5 @@
+@import '../../mixins';
+
 .app {
   display: flex;
   min-height: 100vh;
@@ -13,10 +15,22 @@
     display: flex;
     flex: 1;
     justify-content: center;
+
+    @include for-phone-only {
+      flex-direction: column;
+      align-self: center;
+      width: 100%;
+    }
   }
 
   &Filters {
     width: 232px;
+    box-sizing: border-box;
+
+    @include for-phone-only {
+      width: 100%;
+      margin-bottom: 20px;
+    }
   }
 
   &SortTabs {
@@ -24,6 +38,7 @@
   }
 
   &Results {
+    box-sizing: border-box;
     max-width: 502px;
     width: 100%;
   }

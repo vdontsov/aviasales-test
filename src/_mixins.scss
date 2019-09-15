@@ -4,3 +4,7 @@
   line-height: 20px;
   letter-spacing: 0.5px;
 }
+
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}

@@ -4,6 +4,10 @@
 .filters {
   position: fixed;
 
+  @include for-phone-only {
+    position: inherit;
+  }
+
   &Title {
     @include header;
   }
