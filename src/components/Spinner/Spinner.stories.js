@@ -2,7 +2,7 @@ import React from 'react'
 
 import { storiesOf } from '@storybook/react'
 
-import Card from './Card'
+import Spinner from './Spinner'
 
-storiesOf('Card', module)
-  .add('default', () => <Card />)
+storiesOf('Spinner', module)
+  .add('default', () => <Spinner />)
