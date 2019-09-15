@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import shortid from 'shortid'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import { FiltersPropTypes, SortTabsPropTypes, TicketPropTypes } from '../../utils'
-import { Filters, SortTabs, Ticket } from '../../components'
+import { Filters, SortTabs, Ticket, Spinner } from '../../components'
 import styles from './App.module.scss'
 
 const App = ({
@@ -14,7 +15,7 @@ const App = ({
   getTickets,
   currentPage,
   tickets,
-  loadingTickets,
+  nextPage,
 }) => {
   useEffect(getSearchId, [])
 
@@ -23,8 +24,8 @@ const App = ({
   }, [searchId, getTickets])
 
   const numberPerPage = 10
-  const begin = ((currentPage - 1) * numberPerPage)
-  const end = begin + numberPerPage
+  const begin = 0
+  const end = currentPage * numberPerPage
   const ticketsToShow = tickets.slice(begin, end).map(t => <Ticket key={shortid.generate()} data={t} />)
 
   return (
@@ -40,9 +41,13 @@ const App = ({
         </div>
         <div className={styles.appResults}>
           <SortTabs data={sortTabs} />
-          <div>
+          <InfiniteScroll
+            dataLength={ticketsToShow.length}
+            hasMore={true}
+            next={nextPage}
+            loader={<Spinner />}>
             {ticketsToShow}
-          </div>
+          </InfiniteScroll>
         </div>
       </main>
     </div>
@@ -51,7 +56,6 @@ const App = ({
 
 App.propTypes = {
   currentPage: PropTypes.number,
-  loadingTickets: PropTypes.bool,
   tickets: PropTypes.arrayOf(TicketPropTypes),
   searchId: PropTypes.string,
   filters: FiltersPropTypes,
@@ -59,6 +63,7 @@ App.propTypes = {
   changeFilters: PropTypes.func,
   getSearchId: PropTypes.func,
   getTickets: PropTypes.func,
+  nextPage: PropTypes.func,
 }
 
 export default App

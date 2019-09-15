@@ -20,12 +20,11 @@ export default (state = INITIAL_STATE, action) => {
   case actionTypes.GET_SEARCH_ID_SUCCESS:
     return { ...state, searchId: action.payload }
 
-  case actionTypes.GET_TICKETS:
-    return { ...state, loadingTickets: true }
+  case actionTypes.GET_TICKETS_SUCCESS:
+    return { ...state, tickets: action.payload }
 
-  case actionTypes.GET_TICKETS_SUCCESS: {
-    return { ...state, tickets: action.payload, loadingTickets: false }
-  }
+  case actionTypes.NEXT_PAGE:
+    return { ...state, currentPage: state.currentPage + 1 }
 
   default:
    return state
